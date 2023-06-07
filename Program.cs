@@ -114,7 +114,7 @@ namespace Schedule
                     default:
                         Console.WriteLine("\nНеверный ввод"); break;
                 }
-                Thread.Sleep(300);
+                Thread.Sleep(3000);
                 Console.Clear();
             } while (key != ConsoleKey.Q);
             

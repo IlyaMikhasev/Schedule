@@ -36,6 +36,7 @@ namespace Schedule
             myConnection = new SQLiteConnection(_source + _cache + _mode);
             myConnection.Open();
             myQuery = new SQLiteCommand(_my_query, myConnection);
+            myQuery.ExecuteNonQuery();
           
         }
         public void AddEmployer(Employer _name) {
@@ -46,7 +47,6 @@ namespace Schedule
             my_query = "INSERT INTO Employers(Age, Name, sex, position,schedule) " +
                 "VALUES('"+_name.Age+"','" + _name.Name + "','" + sex + "','"+_name.Position+"','"+_name.Work()+"');";
             sqlConnect(my_query); 
-            myQuery.ExecuteNonQuery();
         }
         public void SelectSchedulOne(string _name) {
             my_query = "SELECT schedule,Name FROM Employers where Name='" + _name + "';";

@@ -67,12 +67,12 @@ namespace Schedule
                 correctIn = false;
                 do
                 {
-                    Console.WriteLine("Введите должность сотрудника: worker или manager.");
-                    string input = Console.ReadLine();
-                    switch (input.ToLower())
+                    Console.WriteLine("Выберите график:\n1)2/2 по 12 часов\n2)5/2 по 8 часов\n");
+                    ConsoleKey key = Console.ReadKey().Key;
+                    switch (key)
                     {
-                        case "worker": position = input; correctIn = true; break;
-                        case "manager": position = input; correctIn = true; break;
+                        case ConsoleKey.D1: position = "worker"; correctIn = true; break;
+                        case ConsoleKey.D2: position = "manager"; correctIn = true; break;
                         default: Console.WriteLine("Неверный ввод"); break;
                     }
                 } while (!correctIn);
@@ -89,16 +89,17 @@ namespace Schedule
             do
             {
 
-                Console.WriteLine("1 - добавить сотрудника,2 - вызвать график работников,Q-выход");
+                Console.WriteLine("1) добавить сотрудника\n2) вызвать график работников\nQ) выход");
                 key = Console.ReadKey().Key;
                 switch (key)
                 {
                     case ConsoleKey.D1:
                         connect.AddEmployer(CreateEmp(InputDateEmployer())); break;
                     case ConsoleKey.D2:
-                        Console.WriteLine("\nДля ввывода графика введите ");
-                        Console.WriteLine("1 - график определенного работника, 2 - график всех рабочих");
+                        Console.WriteLine("\nДля ввывода графика выберите ");
+                        Console.WriteLine("1) график определенного работника\n2)график всех рабочих");
                         key = Console.ReadKey().Key;
+                        Console.WriteLine();
                         switch (key)
                         {
                             case ConsoleKey.D1:
@@ -114,7 +115,6 @@ namespace Schedule
                     default:
                         Console.WriteLine("\nНеверный ввод"); break;
                 }
-                Thread.Sleep(3000);
                 Console.Clear();
             } while (key != ConsoleKey.Q);
             
